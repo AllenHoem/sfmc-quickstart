@@ -1,0 +1,3354 @@
+{
+	"info": {
+		"_postman_id": "bd27190d-264b-434b-9fa8-18ab94787a05",
+		"name": "TrailheaDX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Request SFMC Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b69caa0a-127e-43da-8dcc-6c8329831b1b",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"if (data.access_token) {",
+									"  tests[\"Body has accessToken\"] = true; ",
+									"  pm.environment.set(\"dne_etAccessToken\", data.access_token);",
+									"}",
+									"else {",
+									"  tests[\"Body has access_token\"] = false;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"grant_type\":\"client_credentials\",\n    \"client_id\":\"{{et_clientId}}\",\n    \"client_secret\":\"{{et_clientSecret}}\",\n    \"account_id\":\"{{et_mid}}\"    \n}"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.auth.marketingcloudapis.com/v2/token",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"auth",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"v2",
+								"token"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-app-development.meta/mc-app-development/access-token-s2s.htm"
+					},
+					"response": [
+						{
+							"name": "Request SFMC Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"grant_type\":\"client_credentials\",\n    \"client_id\":\"{{et_clientId}}\",\n    \"client_secret\":\"{{et_clientSecret}}\",\n    \"account_id\":\"{{et_mid}}\"    \n}"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.auth.marketingcloudapis.com/v2/token",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"auth",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"v2",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t06"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "c2f224b8-3f60-48df-bef9-a6a7af3ae633"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "949"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 08 Apr 2019 02:23:52 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsImtpZCI6IjEiLCJ2ZXIiOiIxIiwidHlwIjoiSldUIn0.eyJhY2Nlc3NfdG9rZW4iOiI0RnlHWXQwYkZlQnlEQTlQSE1MWlNHYWsiLCJjbGllbnRfaWQiOiJnaXlnZW51NmE0NzA0YmE4Y3doNWg0bmoiLCJlaWQiOjE0NjE4NzIsInN0YWNrX2tleSI6IlM0IiwicGxhdGZvcm1fdmVyc2lvbiI6MiwiY2xpZW50X3R5cGUiOiJTZXJ2ZXJUb1NlcnZlciJ9.wLN6MlHxuE2R6iJofAmN2uupCY1Qn4OnnsjXV2P-MTs.WGMgqRz17bnoQfzpvsfK1LkQM5c17C3CfppxfjHmf0L6tOjHd-qlf33UugPOY_UmnC5_c44dcGw1XiuChG-HAcG57wneA1zParQaYTIq8xqkS-ECZwuz3EN8kRm_IvsOTLhBFHTrR5nRrwjaAw86C2oQ3TmNhJq2BhLFYXJDEEe5CxV56N6muQN\",\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 1079,\n    \"scope\": \"offline documents_and_images_read documents_and_images_write saved_content_read saved_content_write automations_execute automations_read automations_write journeys_execute journeys_read journeys_write email_read email_send email_write push_read push_send push_write sms_read sms_send sms_write social_post social_publish social_read social_write web_publish web_read web_write audiences_read audiences_write list_and_subscribers_read list_and_subscribers_write data_extensions_read data_extensions_write file_locations_read file_locations_write tracking_events_read calendar_read calendar_write campaign_read campaign_write accounts_read accounts_write users_read users_write webhooks_read webhooks_write workflows_write approvals_write tags_write approvals_read tags_read workflows_read ott_chat_messaging_read ott_chat_messaging_send ott_channels_read ott_channels_write marketing_cloud_connect_read marketing_cloud_connect_write marketing_cloud_connect_send event_notification_callback_create event_notification_callback_read event_notification_callback_update event_notification_callback_delete event_notification_subscription_create event_notification_subscription_read event_notification_subscription_update event_notification_subscription_delete\",\n    \"soap_instance_url\": \"https://mcmtwjynv76zg4b73149z7yzw5mm.soap.marketingcloudapis.com/\",\n    \"rest_instance_url\": \"https://mcmtwjynv76zg4b73149z7yzw5mm.rest.marketingcloudapis.com/\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transactional Messaging",
+			"item": [
+				{
+					"name": "Email - Create Send Definiton",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"definitionKey\": \"makana_appt_reminder\",\n    \"status\": \"Active\",\n    \"name\": \"Postman Demo\",\n    \"description\": \"Created via REST\",\n    \"classification\": \"Default Transactional\",\n    \"content\": {\n        \"customerKey\": \"a128e1f4-0c53-4232-be79-7e2f9f13a7ce\"\n    },\n    \"subscriptions\": {\n        \"list\": \"All Subscribers\",\n        \"dataExtension\": \"CF2F5C60-65C3-43E7-8ACD-AD68667F133C\",\n        \"autoAddSubscriber\": true,\n        \"updateSubscriber\": false\n    },\n    \"options\": {\n        \"trackLinks\": true\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"definitions"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/createSendDefinition.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Create Send Definiton",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"definitionKey\": \"tapi-demo-postman\",\n  \"status\": \"Active\",\n  \"name\": \"Postman Demo\",\n  \"description\": \"Created via REST\",\n  \"classification\": \"Default Transactional\",\n  \"content\": {\n    \"customerKey\": \"a128e1f4-0c53-4232-be79-7e2f9f13a7ce\"\n  },\n  \"subscriptions\": {\n    \"list\": \"All Subscribers - 515987\",\n    \"dataExtension\": \"CF2F5C60-65C3-43E7-8ACD-AD68667F133C\",\n    \"autoAddSubscriber\": true,\n    \"updateSubscriber\": false\n  },\n  \"options\": {\n    \"trackLinks\": true\n  }\n}"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"definitions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t10"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "1c505a9c-ae99-4e7d-aed1-5fc07cdca5a2"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "348"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:04:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"1c505a9c-ae99-4e7d-aed1-5fc07cdca5a2\",\n    \"name\": \"Postman Demo\",\n    \"definitionKey\": \"tapi-demo-postman\",\n    \"description\": \"Created via REST\",\n    \"classification\": \"Default Transactional\",\n    \"status\": \"Active\",\n    \"createdDate\": \"2019-04-09T22:04:00\",\n    \"modifiedDate\": \"2019-04-09T22:04:00\",\n    \"content\": {\n        \"customerKey\": \"a128e1f4-0c53-4232-be79-7e2f9f13a7ce\"\n    },\n    \"subscriptions\": {\n        \"dataExtension\": \"CF2F5C60-65C3-43E7-8ACD-AD68667F133C\",\n        \"list\": \"All Subscribers - 515987\",\n        \"autoAddSubscriber\": true,\n        \"updateSubscriber\": false\n    },\n    \"options\": {\n        \"trackLinks\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Get a List of Definitions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{dne_etAccessToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"definitions"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getDefinitions.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Get a List of Definitions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{dne_etAccessToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"definitions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t07"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "f88c5419-3482-4100-a095-bbb4fbd0aaf3"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "281"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 03:56:51 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"f88c5419-3482-4100-a095-bbb4fbd0aaf3\",\n    \"definitions\": [\n        {\n            \"name\": \"ENA Appointment\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"status\": \"Active\",\n            \"createdDate\": \"2019-02-04T10:50:00\",\n            \"modifiedDate\": \"2019-02-04T10:50:00\"\n        },\n        {\n            \"name\": \"ENA Birthday\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"status\": \"Active\",\n            \"createdDate\": \"2019-02-04T10:52:00\",\n            \"modifiedDate\": \"2019-02-04T10:52:00\"\n        },\n        {\n            \"name\": \"ENA Welcome\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"status\": \"Active\",\n            \"createdDate\": \"2019-02-04T08:24:00\",\n            \"modifiedDate\": \"2019-02-04T08:24:00\"\n        },\n        {\n            \"name\": \"Full HTML Payload\",\n            \"definitionKey\": \"tapi-full-html\",\n            \"status\": \"Active\",\n            \"createdDate\": \"2019-03-21T17:58:00\",\n            \"modifiedDate\": \"2019-03-21T17:58:00\"\n        }\n    ],\n    \"count\": 4,\n    \"page\": 1,\n    \"pageSize\": 50\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Get Queue Metrics for a Definition",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions/makana_appt_reminder/queue",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"definitions",
+								"makana_appt_reminder",
+								"queue"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getQueueMetricsForDefinition.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Get Queue Metrics for a Definition",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions/tapi-demo-postman/queue",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"definitions",
+										"tapi-demo-postman",
+										"queue"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t09"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "e09dd7e2-5abf-4f01-a35e-6a16df09d990"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:23:38 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"e09dd7e2-5abf-4f01-a35e-6a16df09d990\",\n    \"count\": 0,\n    \"ageSeconds\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Get Message Send Status for Recipient",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/messages/72c0a686-c99f-4b10-ab9b-ae3ff6b89307",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"messages",
+								"72c0a686-c99f-4b10-ab9b-ae3ff6b89307"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getSendStatusForRecipient.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Get Message Send Status for Recipient",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/messages/72c0a686-c99f-4b10-ab9b-ae3ff6b89307",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"messages",
+										"72c0a686-c99f-4b10-ab9b-ae3ff6b89307"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t06"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "730af601-3e42-4838-9ed0-bddf06351f72"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:44:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"730af601-3e42-4838-9ed0-bddf06351f72\",\n    \"eventCategoryType\": \"TransactionalSendEvents.EmailSent\",\n    \"timestamp\": \"2019-04-09T22:09:29.103\",\n    \"compositeId\": \"69787B6F-8828-E911-A261-78E3B50B4F00.1420508.44609.927.163040351\",\n    \"info\": {\n        \"messageKey\": \"72c0a686-c99f-4b10-ab9b-ae3ff6b89307\",\n        \"contactKey\": \"aaron.cates@salesforce.com\",\n        \"to\": \"aaron.cates@salesforce.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Get List of Messages Not Sent to Recipients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/messages/?type=notSent",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"messages",
+								""
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "notSent"
+								}
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getMessagesNotSent.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Get List of Messages Not Sent to Recipients",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/messages/?type=notSent",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"messages",
+										""
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "notSent"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t07"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "1fddc327-437d-4774-a88b-7e2bb4413522"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2167"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:46:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"lastEventID\": 1369,\n    \"messages\": [\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T08:30:02.853\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1300,\n            \"info\": {\n                \"messageKey\": \"a76eeb50-41ae-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100030557\",\n                \"to\": \"lpringle.10003.0557@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T09:30:03.36\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1301,\n            \"info\": {\n                \"messageKey\": \"093d8c80-41b7-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100020943\",\n                \"to\": \"tburrow.10002.0943@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T10:30:06.263\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1302,\n            \"info\": {\n                \"messageKey\": \"6af39ca0-41bf-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100020373\",\n                \"to\": \"jlevesque.10002.0373@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T11:30:03.617\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1306,\n            \"info\": {\n                \"messageKey\": \"ccb8a0e0-41c7-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100030153\",\n                \"to\": \"skoehler.10003.0153@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T14:30:02.483\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1312,\n            \"info\": {\n                \"messageKey\": \"f207d4b0-41e0-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100020567\",\n                \"to\": \"acall.10002.0567@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T15:30:02.797\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1313,\n            \"info\": {\n                \"messageKey\": \"53c9f2c0-41e9-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100020541\",\n                \"to\": \"rburleson.10002.0541@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T16:30:06.643\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1314,\n            \"info\": {\n                \"messageKey\": \"b59315b0-41f1-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100020823\",\n                \"to\": \"jwilliamson.10002.0823@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T17:30:02.497\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1315,\n            \"info\": {\n                \"messageKey\": \"1754e5a0-41fa-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100020914\",\n                \"to\": \"dcouture.10002.0914@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T18:30:02.833\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1316,\n            \"info\": {\n                \"messageKey\": \"7918b160-4202-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100030629\",\n                \"to\": \"nvest.10003.0629@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T19:30:05.737\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1317,\n            \"info\": {\n                \"messageKey\": \"dadccb40-420a-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100040103\",\n                \"to\": \"gjarrett.10004.0103@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T20:30:04.563\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1318,\n            \"info\": {\n                \"messageKey\": \"3c9e2600-4213-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100010767\",\n                \"to\": \"pchappell.10001.0767@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T21:30:03.717\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1319,\n            \"info\": {\n                \"messageKey\": \"9e63ed90-421b-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100040962\",\n                \"to\": \"dbraxton.10004.0962@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-08T23:30:03.36\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1321,\n            \"info\": {\n                \"messageKey\": \"61ea73a0-422c-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100010866\",\n                \"to\": \"bhess.10001.0866@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T00:30:08.513\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1322,\n            \"info\": {\n                \"messageKey\": \"c3b20ff0-4234-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100040024\",\n                \"to\": \"cnichols.10004.0024@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T01:30:02.84\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1323,\n            \"info\": {\n                \"messageKey\": \"25758d90-423d-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100040654\",\n                \"to\": \"rchastain.10004.0654@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T02:30:03.55\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1324,\n            \"info\": {\n                \"messageKey\": \"8737aba0-4245-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100030737\",\n                \"to\": \"mpoirier.10003.0737@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T03:30:02.967\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1325,\n            \"info\": {\n                \"messageKey\": \"e8fcd6f0-424d-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100010357\",\n                \"to\": \"mdunning.10001.0357@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T04:30:03.183\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1326,\n            \"info\": {\n                \"messageKey\": \"4acf6fc0-4256-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100010858\",\n                \"to\": \"iramirez.10001.0858@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T05:30:03.24\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1327,\n            \"info\": {\n                \"messageKey\": \"ac857fe0-425e-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100020954\",\n                \"to\": \"afort.10002.0954@work.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T06:30:06.313\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1328,\n            \"info\": {\n                \"messageKey\": \"0e4b9590-4267-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100000401\",\n                \"to\": \"jgallo.10000.0401@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T07:30:03.7\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1329,\n            \"info\": {\n                \"messageKey\": \"700d8c90-426f-11e9-93e5-3d72137572fa\",\n                \"contactKey\": \"100040837\",\n                \"to\": \"zmarshall.10004.0837@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T08:30:04.337\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1330,\n            \"info\": {\n                \"messageKey\": \"d1d5ec30-4277-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100010462\",\n                \"to\": \"fforte.10001.0462@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T09:30:03.177\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1331,\n            \"info\": {\n                \"messageKey\": \"3398a680-4280-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100010555\",\n                \"to\": \"bolds.10001.0555@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T10:30:02.797\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1332,\n            \"info\": {\n                \"messageKey\": \"955a9d80-4288-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100030000\",\n                \"to\": \"dgarrett.10003.0000@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T11:30:03.84\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1333,\n            \"info\": {\n                \"messageKey\": \"f721ebb0-4290-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100010057\",\n                \"to\": \"sbaker.10001.0057@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T12:30:05.147\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1334,\n            \"info\": {\n                \"messageKey\": \"58e3bba0-4299-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100040416\",\n                \"to\": \"ccardona.10004.0416@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T13:30:05.753\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1339,\n            \"info\": {\n                \"messageKey\": \"baac4250-42a1-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100030079\",\n                \"to\": \"nleone.10003.0079@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T14:30:02.953\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1344,\n            \"info\": {\n                \"messageKey\": \"1c6cb2b0-42aa-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100000017\",\n                \"to\": \"kbolt.10000.0017@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T15:30:02.57\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1345,\n            \"info\": {\n                \"messageKey\": \"7e307e70-42b2-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100000078\",\n                \"to\": \"achu.10000.0078@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T17:30:08.08\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1347,\n            \"info\": {\n                \"messageKey\": \"41bde250-42c3-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100030212\",\n                \"to\": \"cstallings.10003.0212@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T19:30:02.947\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1349,\n            \"info\": {\n                \"messageKey\": \"0543a510-42d4-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100020399\",\n                \"to\": \"rdillard.10002.0399@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T20:30:03.597\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1350,\n            \"info\": {\n                \"messageKey\": \"670a7e10-42dc-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100030284\",\n                \"to\": \"tfuchs.10003.0284@verizon.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T21:30:03.11\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1351,\n            \"info\": {\n                \"messageKey\": \"c8cdad90-42e4-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100000362\",\n                \"to\": \"bpimentel.10000.0362@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-09T22:30:11.183\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1352,\n            \"info\": {\n                \"messageKey\": \"2a941160-42ed-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100020320\",\n                \"to\": \"sdaigle.10002.0320@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T00:30:03.94\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1354,\n            \"info\": {\n                \"messageKey\": \"ee1f2b50-42fd-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100020952\",\n                \"to\": \"rrhodes.10002.0952@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T01:30:03.28\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1355,\n            \"info\": {\n                \"messageKey\": \"4fe08610-4306-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100020032\",\n                \"to\": \"ksorenson.10002.0032@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T02:30:03.54\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1356,\n            \"info\": {\n                \"messageKey\": \"b1a03320-430e-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100010701\",\n                \"to\": \"lbayer.10001.0701@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T03:30:04.337\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1357,\n            \"info\": {\n                \"messageKey\": \"1366be00-4317-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100010165\",\n                \"to\": \"jgalarza.10001.0165@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T04:30:03.893\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1358,\n            \"info\": {\n                \"messageKey\": \"752ecf80-431f-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100020646\",\n                \"to\": \"sdriscoll.10002.0646@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T05:30:03.733\",\n            \"definitionKey\": \"tapi-ena-appointment\",\n            \"eventID\": 1359,\n            \"info\": {\n                \"messageKey\": \"d714a230-4327-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100020585\",\n                \"to\": \"dcatalano.10002.0585@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T06:30:02.883\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1360,\n            \"info\": {\n                \"messageKey\": \"38b6dc30-4330-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100010646\",\n                \"to\": \"tspooner.10001.0646@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T07:30:04.303\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1361,\n            \"info\": {\n                \"messageKey\": \"9a7a59d0-4338-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100010813\",\n                \"to\": \"kfarrow.10001.0813@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T08:30:03.27\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1362,\n            \"info\": {\n                \"messageKey\": \"fc426b50-4340-11e9-b1b4-3d615244c892\",\n                \"contactKey\": \"100020212\",\n                \"to\": \"ereddick.10002.0212@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T09:30:04.387\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1363,\n            \"info\": {\n                \"messageKey\": \"5e074880-4349-11e9-a2bb-6b719687d01e\",\n                \"contactKey\": \"100030767\",\n                \"to\": \"sdoss.10003.0767@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T10:30:03.943\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1364,\n            \"info\": {\n                \"messageKey\": \"bfc6f590-4351-11e9-a2bb-6b719687d01e\",\n                \"contactKey\": \"100020478\",\n                \"to\": \"lfincher.10002.0478@hotmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T11:30:04.533\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1365,\n            \"info\": {\n                \"messageKey\": \"218bd2c0-435a-11e9-a2bb-6b719687d01e\",\n                \"contactKey\": \"100020496\",\n                \"to\": \"cgreenfield.10002.0496@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T12:30:07.373\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1366,\n            \"info\": {\n                \"messageKey\": \"834cdf60-4362-11e9-a2bb-6b719687d01e\",\n                \"contactKey\": \"100020839\",\n                \"to\": \"kmccreary.10002.0839@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T13:30:02.963\",\n            \"definitionKey\": \"tapi-ena-birthday\",\n            \"eventID\": 1367,\n            \"info\": {\n                \"messageKey\": \"e5131c20-436a-11e9-a2bb-6b719687d01e\",\n                \"contactKey\": \"100030413\",\n                \"to\": \"awhitman.10003.0413@gmail.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T14:30:03.44\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1368,\n            \"info\": {\n                \"messageKey\": \"46da6a50-4373-11e9-a2bb-6b719687d01e\",\n                \"contactKey\": \"100040916\",\n                \"to\": \"zbrowning.10004.0916@yahoo.marketingclouddemo.com\"\n            }\n        },\n        {\n            \"statusCode\": 14,\n            \"statusMessage\": \"EmailAddressMismatch\",\n            \"eventCategoryType\": \"TransactionalSendEvents.EmailNotSent\",\n            \"timestamp\": \"2019-03-10T15:30:04.423\",\n            \"definitionKey\": \"tapi-ena-welcome\",\n            \"eventID\": 1369,\n            \"info\": {\n                \"messageKey\": \"a89b76f0-437b-11e9-a2bb-6b719687d01e\",\n                \"contactKey\": \"100000478\",\n                \"to\": \"abachman.10000.0478@hotmail.marketingclouddemo.com\"\n            }\n        }\n    ],\n    \"count\": 50,\n    \"pageSize\": 50\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Get Send Definition by Key",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions/makana_appt_reminder",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"definitions",
+								"makana_appt_reminder"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getSendDefinition.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Get Send Definition by Key",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions/tapi-demo-postman",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"definitions",
+										"tapi-demo-postman"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t02"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "8ea900ae-1359-47ae-b6ab-b74713c452d4"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "381"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:11:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"8ea900ae-1359-47ae-b6ab-b74713c452d4\",\n    \"name\": \"Postman Demo\",\n    \"definitionKey\": \"tapi-demo-postman\",\n    \"definitionId\": \"559907b1-455b-e911-a2c9-1402ec938de9\",\n    \"description\": \"Created via REST\",\n    \"classification\": \"Default Transactional\",\n    \"status\": \"Active\",\n    \"createdDate\": \"2019-04-09T22:04:00\",\n    \"modifiedDate\": \"2019-04-09T22:04:00\",\n    \"content\": {\n        \"customerKey\": \"a128e1f4-0c53-4232-be79-7e2f9f13a7ce\"\n    },\n    \"subscriptions\": {\n        \"dataExtension\": \"CF2F5C60-65C3-43E7-8ACD-AD68667F133C\",\n        \"list\": \"All Subscribers - 515987\",\n        \"autoAddSubscriber\": true,\n        \"updateSubscriber\": false\n    },\n    \"options\": {\n        \"trackLinks\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Update Message Definition",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"Active\",\n    \"name\": \"Postman Demo - Updated Name\",\n    \"description\": \"Updated Description\",\n    \"classification\": \"Default Transactional\",\n    \"content\": {\n        \"customerKey\": \"a128e1f4-0c53-4232-be79-7e2f9f13a7ce\"\n    },\n    \"subscriptions\": {\n        \"list\": \"All Subscribers - 515987\",\n        \"dataExtension\": \"CF2F5C60-65C3-43E7-8ACD-AD68667F133C\",\n        \"autoAddSubscriber\": true,\n        \"updateSubscriber\": false\n    },\n    \"options\": {\n        \"trackLinks\": true\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions/makana_appt_reminder",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"definitions",
+								"makana_appt_reminder"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/updateMessageDefinition.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Update Message Definition",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"Active\",\n  \"name\": \"Postman Demo - Updated Name\",\n  \"description\": \"Updated Description\",\n  \"classification\": \"Default Transactional\",\n  \"content\": {\n    \"customerKey\": \"a128e1f4-0c53-4232-be79-7e2f9f13a7ce\"\n  },\n  \"subscriptions\": {\n    \"list\": \"All Subscribers - 515987\",\n    \"dataExtension\": \"CF2F5C60-65C3-43E7-8ACD-AD68667F133C\",\n    \"autoAddSubscriber\": true,\n    \"updateSubscriber\": false\n  },\n  \"options\": {\n    \"trackLinks\": true\n  }\n}"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions/tapi-demo-postman",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"definitions",
+										"tapi-demo-postman"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t08"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "ae5ebfe6-d355-45e0-8692-e0776cd934ed"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "355"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:15:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"ae5ebfe6-d355-45e0-8692-e0776cd934ed\",\n    \"name\": \"Postman Demo - Updated Name\",\n    \"definitionKey\": \"tapi-demo-postman\",\n    \"description\": \"Updated Description\",\n    \"classification\": \"Default Transactional\",\n    \"status\": \"Active\",\n    \"createdDate\": \"2019-04-09T22:04:00\",\n    \"modifiedDate\": \"2019-04-09T22:04:00\",\n    \"content\": {\n        \"customerKey\": \"a128e1f4-0c53-4232-be79-7e2f9f13a7ce\"\n    },\n    \"subscriptions\": {\n        \"dataExtension\": \"CF2F5C60-65C3-43E7-8ACD-AD68667F133C\",\n        \"list\": \"All Subscribers - 515987\",\n        \"autoAddSubscriber\": true,\n        \"updateSubscriber\": false\n    },\n    \"options\": {\n        \"trackLinks\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Delete Message Definition",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"definitionKey\": \"tapi-demo-postman\"\n}"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions/makana_appt_reminder",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"definitions",
+								"makana_appt_reminder"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/deleteMessageDefinition.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Delete Message Definition",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"definitionKey\": \"tapi-demo-postman\"\n}"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/definitions/tapi-demo-postman",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"definitions",
+										"tapi-demo-postman"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t04"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "fdd47f33-9baf-44be-a118-b28a2f9df2a5"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "136"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:19:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"fdd47f33-9baf-44be-a118-b28a2f9df2a5\",\n    \"message\": \"Success\",\n    \"deletedDefinitionKey\": \"77327c33-575f-4de1-8ff8-d5486dcc0510\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Send a Message to a Single Recipient",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{dne_etAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"definitionKey\": \"makana_appt_reminder\",\n    \"recipient\": {\n        \"contactKey\": \"user-example-1\",\n        \"to\": \"user@example.com\",\n        \"attributes\": {\n\t    \t\"First\": \"John\",\n\t    \t\"Last\": \"Doe\",\n\t    \t\"Doctor\": \"K. Wheeler\",\n\t    \t\"Location\": \"Makana Central Clinic\",\n\t\t\t\"Date\": \"March 1, 2019 at 2:30pm\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/messages/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"messages",
+								"{{$guid}}"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/sendMessageSingleRecipient.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Send a Message to a Single Recipient",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"definitionKey\": \"tapi-ena-welcome\",\n  \"recipient\":\n  {\n   \"contactKey\": \"aaron.cates@salesforce.com\",\n    \"to\": \"aaron.cates@salesforce.com\",\n    \"attributes\": {\n      \"FirstName\": \"Aaron\",\n      \"Plan\": \"PPO\"\n    }\n}\n}"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/messages/{{$guid}}",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"messages",
+										"{{$guid}}"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t05"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "e907cc10-7b1d-408f-b95a-2428ad28b480"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "135"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:09:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"e907cc10-7b1d-408f-b95a-2428ad28b480\",\n    \"errorcode\": 0,\n    \"responses\": [\n        {\n            \"messageKey\": \"72c0a686-c99f-4b10-ab9b-ae3ff6b89307\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Email - Send a Message to Multiple Recipients",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"definitionKey\": \"makana_appt_reminder\",\n  \"recipients\": [\n    {\n      \"contactKey\": \"aaron.cates@salesforce.com\",\n      \"to\": \"aaron.cates@salesforce.com\",\n      \"messageKey\": \"{{$guid}}\",\n      \"attributes\": {\n        \"FirstName\": \"Aaron\",\n        \"Doctor\": \"Smith\"\n        }\n    },\n    {\n      \"contactKey\": \"aaron.cates@salesforce.com\",\n      \"to\": \"aaron.cates@salesforce.com\",\n      \"messageKey\": \"{{$guid}}\",\n      \"attributes\": {\n        \"FirstName\": \"Billy\",\n        \"Doctor\": \"McNew\"\n      }\n    }\n  ],\n  \"attributes\": {\n    \"GlobalAttribute1\": \"value_a\",\n    \"GlobalAttribute2\": \"value_b\"\n  }\n}"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/messages",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"messaging",
+								"v1",
+								"email",
+								"messages"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/sendMessageMultipleRecipients.htm"
+					},
+					"response": [
+						{
+							"name": "Email - Send a Message to Multiple Recipients",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"definitionKey\": \"tapi-ena-appointment\",\n  \"recipients\": [\n    {\n      \"contactKey\": \"aaron.cates@salesforce.com\",\n      \"to\": \"aaron.cates@salesforce.com\",\n      \"messageKey\": \"{{$guid}}\",\n      \"attributes\": {\n        \"FirstName\": \"Aaron\",\n        \"Doctor\": \"Smith\"\n        }\n    },\n    {\n      \"contactKey\": \"aaron.cates@salesforce.com\",\n      \"to\": \"aaron.cates@salesforce.com\",\n      \"messageKey\": \"{{$guid}}\",\n      \"attributes\": {\n        \"FirstName\": \"Billy\",\n        \"Doctor\": \"McNew\"\n      }\n    }\n  ],\n  \"attributes\": {\n    \"GlobalAttribute1\": \"value_a\",\n    \"GlobalAttribute2\": \"value_b\"\n  }\n}"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/messaging/v1/email/messages",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"messaging",
+										"v1",
+										"email",
+										"messages"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t08"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "31093dc7-71b3-4d65-a399-1e35626d7dcd"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2019 04:41:47 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requestId\": \"31093dc7-71b3-4d65-a399-1e35626d7dcd\",\n    \"errorcode\": 0,\n    \"responses\": [\n        {\n            \"messageKey\": \"2f0736b9-2f64-4cd6-a2ea-92b0167c932d\"\n        },\n        {\n            \"messageKey\": \"3c3504f3-4f49-4099-89da-34e5a4079d09\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Event Notification",
+			"item": [
+				{
+					"name": "Create Subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n  \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n  \"subscriptionName\": \"postman-demo-subscription\",\n  \"eventCategoryTypes\": [\"TransactionalSendEvents.EmailNotSent\",\n  \"TransactionalSendEvents.EmailSent\", \"TransactionalSendEvents.EmailBounced\"],\n  \"filters\": [\"definitionKey=tapi-demo-postman\"]\n}]"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-subscriptions"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/createSubscription.htm"
+					},
+					"response": [
+						{
+							"name": "Create Subscription",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\n  \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n  \"subscriptionName\": \"postman-demo-subscription\",\n  \"eventCategoryTypes\": [\"TransactionalSendEvents.EmailNotSent\",\n  \"TransactionalSendEvents.EmailSent\", \"TransactionalSendEvents.EmailBounced\"],\n  \"filters\": [\"definitionKey=tapi-demo-postman\"]\n}]"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-subscriptions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t10"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "b7fa0fd1-97e0-4189-ad51-dc084da29e5d"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "248"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:17:34 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n        \"callbackName\": \"postman-demo-updated\",\n        \"subscriptionName\": \"postman-demo-subscription\",\n        \"subscriptionId\": \"38977859-87c6-48ae-91c8-b292863bb054\",\n        \"eventCategoryTypes\": [\n            \"TransactionalSendEvents.EmailNotSent\",\n            \"TransactionalSendEvents.EmailSent\",\n            \"TransactionalSendEvents.EmailBounced\"\n        ],\n        \"filters\": [\n            \"definitionKey=tapi-demo-postman\"\n        ],\n        \"status\": \"active\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Delete Subscription",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions/38977859-87c6-48ae-91c8-b292863bb054",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-subscriptions",
+								"38977859-87c6-48ae-91c8-b292863bb054"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/deleteSubscription.htm"
+					},
+					"response": [
+						{
+							"name": "Delete Subscription",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions/38977859-87c6-48ae-91c8-b292863bb054",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-subscriptions",
+										"38977859-87c6-48ae-91c8-b292863bb054"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t04"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "5bedd922-3e92-482f-ad93-07ccaaf31172"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:22:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Subscription",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions/38977859-87c6-48ae-91c8-b292863bb054",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-subscriptions",
+								"38977859-87c6-48ae-91c8-b292863bb054"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getSubscription.htm"
+					},
+					"response": [
+						{
+							"name": "Get Subscription",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions/38977859-87c6-48ae-91c8-b292863bb054",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-subscriptions",
+										"38977859-87c6-48ae-91c8-b292863bb054"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t01"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "e01b55ab-32c4-4956-ad73-c73b93fdfb8f"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "318"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:18:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n    \"callbackName\": \"postman-demo-updated\",\n    \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n    \"maxBatchSize\": 1000,\n    \"subscriptionId\": \"38977859-87c6-48ae-91c8-b292863bb054\",\n    \"subscriptionName\": \"postman-demo-subscription\",\n    \"eventCategoryTypes\": [\n        \"TransactionalSendEvents.EmailNotSent\",\n        \"TransactionalSendEvents.EmailSent\",\n        \"TransactionalSendEvents.EmailBounced\"\n    ],\n    \"filters\": [\n        \"definitionKey=tapi-demo-postman\"\n    ],\n    \"status\": \"active\",\n    \"statusReason\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Subscriptions for a Callback",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions-by-cb/0ddf4895-c8f6-4b8b-8b31-32cfd62df35b",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-subscriptions-by-cb",
+								"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getAllSubscriptionsForCallback.htm"
+					},
+					"response": [
+						{
+							"name": "Get All Subscriptions for a Callback",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions-by-cb/0ddf4895-c8f6-4b8b-8b31-32cfd62df35b",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-subscriptions-by-cb",
+										"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t06"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "b3e30ad3-3087-45ef-9033-8ed3d3c4763f"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "319"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:18:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n        \"callbackName\": \"postman-demo-updated\",\n        \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n        \"maxBatchSize\": 1000,\n        \"subscriptionId\": \"38977859-87c6-48ae-91c8-b292863bb054\",\n        \"subscriptionName\": \"postman-demo-subscription\",\n        \"eventCategoryTypes\": [\n            \"TransactionalSendEvents.EmailNotSent\",\n            \"TransactionalSendEvents.EmailSent\",\n            \"TransactionalSendEvents.EmailBounced\"\n        ],\n        \"filters\": [\n            \"definitionKey=tapi-demo-postman\"\n        ],\n        \"status\": \"active\",\n        \"statusReason\": \"\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Verify Callback",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{dne_etAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n     \"verificationKey\": \"xv8pMrf9bxsvKhqvXjRjSphEK2WfPmuq+VBhzQfntJs=\"\n}"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-verify",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-verify"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/verifyCallback.htm"
+					},
+					"response": [
+						{
+							"name": "Verify Callback",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{dne_etAccessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n     \"verificationKey\": \"xv8pMrf9bxsvKhqvXjRjSphEK2WfPmuq+VBhzQfntJs=\"\n}"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-verify",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-verify"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t08"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "076f14fc-1fd7-4dcf-9a37-6a52c07335c2"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:13:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete Callback",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{dne_etAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks/0ddf4895-c8f6-4b8b-8b31-32cfd62df35b",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-callbacks",
+								"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/deleteCallback.htm"
+					},
+					"response": [
+						{
+							"name": "Delete Callback",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{dne_etAccessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks/0ddf4895-c8f6-4b8b-8b31-32cfd62df35b",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-callbacks",
+										"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t01"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "3c067b00-27b3-4734-917e-7044f060f3c8"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:22:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create Callback",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{dne_etAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n  \"callbackName\": \"postman-demo\",\n  \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n  \"maxBatchSize\": 1000\n}]"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-callbacks"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/createCallback.htm"
+					},
+					"response": [
+						{
+							"name": "Create Callback",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{dne_etAccessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\n  \"callbackName\": \"postman-demo\",\n  \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n  \"maxBatchSize\": 1000\n}]"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-callbacks"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t01"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "d4b2bf16-18fd-4a2c-9ddb-0e87b1490e9f"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "221"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:12:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"callbackName\": \"postman-demo\",\n        \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n        \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n        \"signatureKey\": \"CVDyPr6yIBrEwAddHQqgXmXl83y7JFiB7od5kZXEQ04=\",\n        \"maxBatchSize\": 1000\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update Callback",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n  \"callbackName\": \"postman-demo-updated\",\n  \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n  \"maxBatchSize\": 1000\n}]"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-callbacks"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/updateCallback.htm"
+					},
+					"response": [
+						{
+							"name": "Update Callback",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\n  \"callbackName\": \"postman-demo-updated\",\n  \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n  \"maxBatchSize\": 1000\n}]"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-callbacks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t03"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "fbe9cc2b-3ea3-45d3-b2c4-3f478cb168b2"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "167"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:16:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n        \"callbackName\": \"postman-demo-updated\",\n        \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n        \"maxBatchSize\": 1000\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get All Callbacks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{dne_etAccessToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-callbacks"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getAllCallbacks.htm"
+					},
+					"response": [
+						{
+							"name": "Get All Callbacks",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{dne_etAccessToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-callbacks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t08"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "4eb3741c-9315-42a5-a2dd-2aa2e845fd99"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "257"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:13:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"callbackId\": \"992ba03e-6875-4f3d-950b-0ab1ca0a1f81\",\n        \"callbackName\": \"event-notification-app\",\n        \"url\": \"https://experts-event-notification.herokuapp.com/callback\",\n        \"maxBatchSize\": 1000,\n        \"status\": \"verified\",\n        \"statusReason\": \"\"\n    },\n    {\n        \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n        \"callbackName\": \"postman-demo\",\n        \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n        \"maxBatchSize\": 1000,\n        \"status\": \"verified\",\n        \"statusReason\": \"\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Callback",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks/0ddf4895-c8f6-4b8b-8b31-32cfd62df35b",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-callbacks",
+								"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/getCallback.htm"
+					},
+					"response": [
+						{
+							"name": "Get Callback",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-callbacks/0ddf4895-c8f6-4b8b-8b31-32cfd62df35b",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-callbacks",
+										"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t10"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "380047b6-cec8-4d0b-b205-48443c73b69f"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "179"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:14:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n    \"callbackName\": \"postman-demo\",\n    \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n    \"maxBatchSize\": 1000,\n    \"status\": \"verified\",\n    \"statusReason\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Subscription",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{dne_etAccessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n  \"subscriptionName\": \"postman-demo-subscription-updated\",\n  \"eventCategoryTypes\": [\"TransactionalSendEvents.EmailNotSent\",\n        \"TransactionalSendEvents.EmailSent\",\n        \"TransactionalSendEvents.EmailBounced\"],\n  \"subscriptionId\": \"38977859-87c6-48ae-91c8-b292863bb054\",\n         \"filters\": [\"definitionKey=tapi-demo-postman\"],\n         \"status\": \"paused\",\n         \"statusReason\": \"demo pause update\"\n}]"
+						},
+						"url": {
+							"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions",
+							"protocol": "https",
+							"host": [
+								"{{et_subdomain}}",
+								"rest",
+								"marketingcloudapis",
+								"com"
+							],
+							"path": [
+								"platform",
+								"v1",
+								"ens-subscriptions"
+							]
+						},
+						"description": "https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/updateSubscription.htm"
+					},
+					"response": [
+						{
+							"name": "Update Subscription - Pause",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\n  \"subscriptionName\": \"postman-demo-subscription-updated\",\n  \"eventCategoryTypes\": [\"TransactionalSendEvents.EmailNotSent\",\n        \"TransactionalSendEvents.EmailSent\",\n        \"TransactionalSendEvents.EmailBounced\"],\n  \"subscriptionId\": \"38977859-87c6-48ae-91c8-b292863bb054\",\n         \"filters\": [\"definitionKey=tapi-demo-postman\"],\n         \"status\": \"paused\",\n         \"statusReason\": \"demo pause update\"\n}]"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-subscriptions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t01"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "7d94e327-9140-4c57-ae9e-2e3b0c331eda"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "326"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:20:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n        \"callbackName\": \"postman-demo-updated\",\n        \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n        \"maxBatchSize\": 1000,\n        \"subscriptionId\": \"38977859-87c6-48ae-91c8-b292863bb054\",\n        \"subscriptionName\": \"postman-demo-subscription-updated\",\n        \"eventCategoryTypes\": [\n            \"TransactionalSendEvents.EmailNotSent\",\n            \"TransactionalSendEvents.EmailSent\",\n            \"TransactionalSendEvents.EmailBounced\"\n        ],\n        \"filters\": [\n            \"definitionKey=tapi-demo-postman\"\n        ],\n        \"status\": \"paused\",\n        \"statusReason\": \"demo pause update\"\n    }\n]"
+						},
+						{
+							"name": "Update Subscription - Active",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{dne_etAccessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\n  \"subscriptionName\": \"postman-demo-subscription-updated\",\n  \"eventCategoryTypes\": [\"TransactionalSendEvents.EmailNotSent\",\n        \"TransactionalSendEvents.EmailSent\",\n        \"TransactionalSendEvents.EmailBounced\"],\n  \"subscriptionId\": \"38977859-87c6-48ae-91c8-b292863bb054\",\n         \"filters\": [\"definitionKey=tapi-demo-postman\"],\n         \"status\": \"active\",\n         \"statusReason\": \"demo active update\"\n}]"
+								},
+								"url": {
+									"raw": "https://{{et_subdomain}}.rest.marketingcloudapis.com/platform/v1/ens-subscriptions",
+									"protocol": "https",
+									"host": [
+										"{{et_subdomain}}",
+										"rest",
+										"marketingcloudapis",
+										"com"
+									],
+									"path": [
+										"platform",
+										"v1",
+										"ens-subscriptions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Mashery-Responder",
+									"value": "04-t08"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Mashery-Message-ID",
+									"value": "f96ecdc5-59ad-445f-b041-bc8a9f0de9d5"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15552000; preload"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "upgrade-insecure-requests"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "x-frame-options",
+									"value": "DENY"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache, must-revalidate, max-age=0, no-store, private"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "327"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Apr 2019 14:21:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"callbackId\": \"0ddf4895-c8f6-4b8b-8b31-32cfd62df35b\",\n        \"callbackName\": \"postman-demo-updated\",\n        \"url\": \"https://webhook.site/6f2e0568-0ab4-4648-8ba9-6aaca5cf7b25\",\n        \"maxBatchSize\": 1000,\n        \"subscriptionId\": \"38977859-87c6-48ae-91c8-b292863bb054\",\n        \"subscriptionName\": \"postman-demo-subscription-updated\",\n        \"eventCategoryTypes\": [\n            \"TransactionalSendEvents.EmailNotSent\",\n            \"TransactionalSendEvents.EmailSent\",\n            \"TransactionalSendEvents.EmailBounced\"\n        ],\n        \"filters\": [\n            \"definitionKey=tapi-demo-postman\"\n        ],\n        \"status\": \"active\",\n        \"statusReason\": \"demo active update\"\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	]
+}
